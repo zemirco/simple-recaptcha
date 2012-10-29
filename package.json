@@ -1,0 +1,30 @@
+{
+  "name": "simple-recaptcha",
+  "version": "0.0.1",
+  "description": "Simple implementation of google's reCAPTCHA",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+  	"type": "git",
+		"url": "https://github.com/zeMirco/simple-recaptcha.git"
+  },
+  "keywords": [
+    "google",
+    "reCAPTCHA",
+    "verify",
+    "verification",
+    "human",
+    "computer"
+  ],
+  "author": {
+  	"name": "Mirco Zeiss",
+		"email": "mirco.zeiss@gmail.com",
+		"twitter": "zeMirco"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "should": "~1.2.0"
+  }
+}
