@@ -41,6 +41,8 @@ Requires mocha and should.
 $ make test
 ```
 
+or
+
 ```bash
 $ npm test
 ```
