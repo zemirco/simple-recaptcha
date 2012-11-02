@@ -30,8 +30,11 @@ module.exports = function(privateKey, remoteIP, challenge, response, cb) {
     response.on('end', function() {
       var success = body.split('\n')[0] === "true";
       var error = body.split('\n')[1];
-      if (!success) cb(new Error(error));
-      cb(null);
+      if (!success) {
+        cb(new Error(error));
+      } else {
+        cb(null);
+      }
     });
     
   });
