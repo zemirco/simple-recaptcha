@@ -27,7 +27,7 @@ app.post('/', function(req, res) {
       response = req.body.recaptcha_response_field;
       
   simple_recaptcha(privateKey, ip, challenge, response, function(err) {
-    if (err) res.send(err.message);
+    if (err) return res.send(err.message);
     res.send('verified');
   });
 });
