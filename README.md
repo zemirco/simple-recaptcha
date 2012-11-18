@@ -21,10 +21,10 @@ var simple_recaptcha = require('simple-recaptcha');
 
 app.post('/', function(req, res) {
   
-  var privateKey = '1234567890abcdef',  // your private key here
-      ip = req.ip,
-      challenge = req.body.recaptcha_challenge_field,
-      response = req.body.recaptcha_response_field;
+  var privateKey = '1234567890abcdef'; // your private key here
+  var ip = req.ip;
+  var challenge = req.body.recaptcha_challenge_field;
+  var response = req.body.recaptcha_response_field;
       
   simple_recaptcha(privateKey, ip, challenge, response, function(err) {
     if (err) return res.send(err.message);
