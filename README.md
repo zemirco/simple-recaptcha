@@ -1,5 +1,7 @@
 # simple reCAPTCHA
 
+[![Build Status](https://travis-ci.org/zeMirco/simple-recaptcha.png)](https://travis-ci.org/zeMirco/simple-recaptcha)
+
 Implements Google's [reCAPTCHA](https://developers.google.com/recaptcha/) in node.js. Can be used with pure node.js or in combination with express.js. Doesn't require additional libraries, just core `http` module.
 
 ## Installation
