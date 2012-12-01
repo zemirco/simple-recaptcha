@@ -7,8 +7,8 @@
     "test": "make test"
   },
   "repository": {
-  	"type": "git",
-		"url": "https://github.com/zeMirco/simple-recaptcha.git"
+    "type": "git",
+    "url": "https://github.com/zeMirco/simple-recaptcha.git"
   },
   "keywords": [
     "google",
@@ -19,12 +19,13 @@
     "computer"
   ],
   "author": {
-  	"name": "Mirco Zeiss",
-		"email": "mirco.zeiss@gmail.com",
-		"twitter": "zeMirco"
+    "name": "Mirco Zeiss",
+    "email": "mirco.zeiss@gmail.com",
+    "twitter": "zeMirco"
   },
   "license": "MIT",
   "devDependencies": {
-    "should": "~1.2.0"
+    "should": "~1.2.0",
+    "mocha": "~1.7.3"
   }
 }
