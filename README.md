@@ -25,10 +25,9 @@ app.post('/', function(req, res) {
   
   var privateKey = '1234567890abcdef'; // your private key here
   var ip = req.ip;
-  var challenge = req.body.recaptcha_challenge_field;
-  var response = req.body.recaptcha_response_field;
+  var response = req.body['g-recaptcha-response'];
       
-  simple_recaptcha(privateKey, ip, challenge, response, function(err) {
+  simple_recaptcha(privateKey, ip, response, function(err) {
     if (err) return res.send(err.message);
     res.send('verified');
   });
