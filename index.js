@@ -25,7 +25,7 @@ module.exports = function(privateKey, remoteIP, response, cb) {
     return cb(new Error(error));
   }
 
-  options.path += '/recaptcha/api/siteverify?secret=' + privateKey +
+  options.path = '/recaptcha/api/siteverify?secret=' + privateKey +
               '&remoteip=' + remoteIP +
               '&response=' + response;
   
