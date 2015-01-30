@@ -1,6 +1,6 @@
 {
   "name": "simple-recaptcha",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Simple implementation of google's reCAPTCHA",
   "main": "index.js",
   "scripts": {

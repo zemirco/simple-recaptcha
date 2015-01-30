@@ -1,24 +1,22 @@
-var http = require('http');
+var https = require('https');
 
 var options = {
   host: 'www.google.com',
-  port: 80,
-  path: '/recaptcha/api/verify',
-  method: 'POST',
+  port: 443,
+  path: '/recaptcha/api/siteverify?',
+  method: 'GET',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   }
 };
 
-module.exports = function(privateKey, remoteIP, challenge, response, cb) {
+module.exports = function(privateKey, remoteIP, response, cb) {
   var error = null;
   
   if (!privateKey) {
     error = 'Private key is required';
   } else if (!remoteIP) {
     error = 'Remote IP is required';
-  } else if (!challenge) {
-    error = 'Challenge is required';
   } else if (!response) {
     error = 'Response is required';
   }
@@ -26,8 +24,12 @@ module.exports = function(privateKey, remoteIP, challenge, response, cb) {
   if (error) {
     return cb(new Error(error));
   }
+
+  options.path = '/recaptcha/api/siteverify?secret=' + privateKey +
+              '&remoteip=' + remoteIP +
+              '&response=' + response;
   
-  var request = http.request(options, function(response) {
+  var request = https.request(options, function(response) {
     var body = '';
     
     response.on('error', function(err) {
@@ -39,9 +41,8 @@ module.exports = function(privateKey, remoteIP, challenge, response, cb) {
     });
     
     response.on('end', function() {
-      var success = body.split('\n')[0] === "true";
-      var error = body.split('\n')[1];
-      if (!success) return cb(new Error(error));
+      var data = JSON.parse( body );
+      if (!data.success) return cb(new Error(data['error-codes']));
       cb(null);
     });
     
@@ -50,13 +51,6 @@ module.exports = function(privateKey, remoteIP, challenge, response, cb) {
   request.on('error', function(err) {
     return cb(new Error(err));
   });
-  
-  var query = 'privatekey=' + privateKey + 
-              '&remoteip=' + remoteIP + 
-              '&challenge=' + challenge + 
-              '&response=' + response;
-              
-  request.write(query);
   
   request.end();
   
